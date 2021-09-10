@@ -130,7 +130,23 @@ class Solution:
         return res[::-1]
 
 ```
-
+```
+def addToArrayForm1(A, k):
+    length = len(A)-1
+    res = []
+    for i in range(length,-1,-1):
+        curSum = A[i] + k % 10
+        k = k //10
+        if curSum >=10:
+            k = k +1
+            curSum = curSum -10
+        res.append(curSum)
+    while k >0:
+        res.append(k%10)
+        k = k//10
+        
+    return res[::-1]
+```
 
 **similar questions**
 
