@@ -1,9 +1,9 @@
 [LC 989. Add to Array-Form of Integer](https://leetcode-cn.com/problems/add-to-array-form-of-integer/)
 
-**思路**
-- 把num list转化成数字
-- 数字和k相加
-- 相加的和转化成list
+**Ideas**
+- convert list to nums
+- add it up
+- switch it to list
 
 **comment**
 Runtime: 5116 ms beat 5%
@@ -26,6 +26,14 @@ Memory Usage: 15.3 MB beat 87%
             add_up = add_up//10
 
         return result[::-1]
+```
+```
+def addToArrayForm(num,k):
+     str1=''
+     for num1 in num:
+         str1+=str(num1)
+     result1=int(str1)+k
+     return [int(s1) for s1 in str(result1)]
 ```
 
 **复杂度分析**
@@ -79,3 +87,57 @@ def addToArrayForm(A, K):
     return B + A
 
 ```
+
+```
+class Solution:
+    def addToArrayForm(self, A: List[int], K: int) -> List[int]:
+        i = len(A) - 1
+        while K:
+            A[i] += K
+            K, A[i] = A[i] // 10, A[i] % 10
+            i -= 1
+
+            if i < 0 and K:
+                A.insert(0,0)
+                i = 0
+        return A
+
+class Solution:
+    def addToArrayForm(self, A: List[int], K: int) -> List[int]:
+        K = list(map(int,str(K)))
+        
+        res = []
+        i,j = len(A)-1,len(K)-1
+        carry = 0
+
+        while i >= 0 and j >= 0:
+            res.append(A[i] + K[j] + carry)
+            res[-1],carry = res[-1] % 10, res[-1] // 10
+            i -= 1
+            j -= 1
+        while i >= 0:
+            res.append(A[i] + carry)
+            res[-1],carry = res[-1] % 10, res[-1] // 10
+            i -= 1
+        while j >= 0:
+            res.append(K[j] + carry)
+            res[-1],carry = res[-1] % 10, res[-1] // 10
+            j -= 1
+
+        if carry:
+            res.append(1)
+
+        return res[::-1]
+
+```
+
+
+**similar questions**
+
+- Medium
+
+    - https://leetcode.com/problems/add-two-numbers/
+- Easy
+    - https://leetcode.com/problems/plus-one/
+    - https://leetcode.com/problems/add-binary/
+    - https://leetcode.com/problems/add-strings/
