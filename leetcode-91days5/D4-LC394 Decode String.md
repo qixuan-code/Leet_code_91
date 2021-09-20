@@ -12,13 +12,13 @@ class Solution:
                 strs = ''
                 repeat_number = ''
                 while stack and stack[-1] !='[':
-                    strs = stack.pop()+strs
+                    strs = stack.pop()+strs #the sequence here is very important
                 stack.pop() #pop out'[]'
         
                 while stack and stack[-1].isdigit():
-                    repeat_number = repeat_number + stack.pop()
+                    repeat_number = stack.pop() +repeat_number 
                     
-                stack.append(int(repeat_number)*strs)
+                stack.append(int(repeat_number)*strs) #has to append to stack,3[a2[c]]
             
             else:
                 stack.append(i)
