@@ -2,12 +2,11 @@
 
 **Ideas**
 - convert list to nums
-- add it up
-- switch it to list
+
 
 **comment**
 Runtime: 5116 ms beat 5%
-Memory Usage: 15.3 MB beat 87%
+
 
 **python代码**
 ```
