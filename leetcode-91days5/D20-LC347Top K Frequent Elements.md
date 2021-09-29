@@ -35,7 +35,40 @@ class Solution:
 
         return result
 ```
-
+```
+# o(N) 解法
+nums = [1,1,1,3,2,2]
+import collections
+counter = collections.Counter(nums)
+n = len(nums)
+buckets = [[] for _ in range(n)]
+for key in counter:
+    buckets[counter[key]-1].append(key)
+    
+res = []
+for i in range(n-1,-1,-1):
+    for b in buckets[i]:
+        res.append(b)
+        if len(res) >= k:
+            break
+```
+```
+# o(N) 解法
+nums = [1,1,1,3,2,2]
+import collections
+counter = collections.Counter(nums)
+n = len(nums)
+buckets = [[] for _ in range(n)]
+for key in counter:
+    buckets[counter[key]-1].append(key)
+    
+res = []
+for i in range(n-1,-1,-1):
+    for b in buckets[i]:
+        res.append(b)
+        if len(res) >= k:
+            break
+```
 **复杂度分析**
 - 时间复杂度：O(nlogn + 2n + k)
 - 空间复杂度：O(n)
